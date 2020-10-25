@@ -33,7 +33,7 @@ class LoginScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  'Sign in to 7Factor and continue',
+                  'Sign in to Nombre de la Aplicacion and continue',
                   textAlign: TextAlign.center,
                   style:
                   GoogleFonts.openSans(color: Colors.white, fontSize: 28),
