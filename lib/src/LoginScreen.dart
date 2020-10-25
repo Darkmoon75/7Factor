@@ -36,14 +36,14 @@ class LoginScreen extends StatelessWidget {
                   'Sign in to 7Factor and continue',
                   textAlign: TextAlign.center,
                   style:
-                  GoogleFonts.openSans(color: Colors.white, fontSize: 28),
+                      GoogleFonts.openSans(color: Colors.white, fontSize: 28),
                 ),
                 SizedBox(height: 20),
                 Text(
                   'Enter your email and password below to continue to 7Factor and let the learning begin!',
                   textAlign: TextAlign.center,
                   style:
-                  GoogleFonts.openSans(color: Colors.white, fontSize: 14),
+                      GoogleFonts.openSans(color: Colors.white, fontSize: 14),
                 ),
                 SizedBox(
                   height: 50,
@@ -68,9 +68,7 @@ class LoginScreen extends StatelessWidget {
                   elevation: 0,
                   minWidth: double.maxFinite,
                   height: 50,
-                  onPressed: () {
-                    //Here goes the logic for Google SignIn discussed in the next section
-                  },
+                  onPressed: _signInWithGoogle,
                   color: Colors.blue,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -133,21 +131,19 @@ class LoginScreen extends StatelessWidget {
             border: InputBorder.none),
       ),
     );
-
   }
 
   _signInWithGoogle() async {
     final GoogleSignInAccount googleUser = await googleSignIn.signIn();
     final GoogleSignInAuthentication googleAuth =
-    await googleUser.authentication;
+        await googleUser.authentication;
 
+    // ignore: deprecated_member_use
     final AuthCredential credential = GoogleAuthProvider.getCredential(
         idToken: googleAuth.idToken, accessToken: googleAuth.accessToken);
 
+    // ignore: deprecated_member_use
     final FirebaseUser user =
         (await firebaseAuth.signInWithCredential(credential)).user;
   }
-
 }
-
-
