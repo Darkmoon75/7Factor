@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'HomeScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -31,25 +32,58 @@ class _LoginScreenState extends State<LoginScreen> {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
+          automaticallyImplyLeading: false,
         ),
         backgroundColor: primaryColor,
         body: isSignIn
-            ? Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    CircleAvatar(
-                      backgroundImage: NetworkImage(_user.photoUrl),
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  //We take the image from the assets
+                  Image.asset(
+                    'assets/splash-image.png',
+                    height: 250,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  //Texts and Styling of them
+                  Text(
+                    '',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white, fontSize: 28),
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    '',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white, fontSize: 15),
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  //Our MaterialButton which when pressed will take us to a new screen named as
+                  //LoginScreen
+                  MaterialButton(
+                    elevation: 0,
+                    height: 50,
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => HomeScreen()));
+                    },
+                    color: logoGreen,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text('Start Learning!',
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 20)),
+                        Icon(Icons.arrow_forward_ios)
+                      ],
                     ),
-                    Text(_user.displayName),
-                    OutlineButton(
-                      onPressed: () {
-                        gooleSignout();
-                      },
-                      child: Text("Logout"),
-                    )
-                  ],
-                ),
+                    textColor: Colors.white,
+                  )
+                ],
               )
             : Container(
                 alignment: Alignment.topCenter,
