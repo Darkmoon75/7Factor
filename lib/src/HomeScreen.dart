@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'tutores.dart';
+import 'clases.dart';
+import 'foro.dart';
+import 'perfil.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -10,17 +14,26 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
-  final List<Widget> _children = [];
+  final List<Widget> _children = [
+    Clases(),
+    Foro(),
+    Tutores(),
+    Perfil(),
+  ];
+
+  void onTappedBar(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.blue,
-      ),
       backgroundColor: Colors.white,
-      body: Container(),
+      body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        onTap: onTappedBar,
         currentIndex: _currentIndex,
         items: [
           BottomNavigationBarItem(
@@ -28,23 +41,18 @@ class _HomeScreenState extends State<HomeScreen> {
               title: Text('Mis Clases'),
               backgroundColor: Colors.blue),
           BottomNavigationBarItem(
-              icon: Icon(Icons.message),
+              icon: Icon(FontAwesomeIcons.bullhorn),
               title: Text('Foro'),
               backgroundColor: Colors.green),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person_pin),
+              icon: Icon(FontAwesomeIcons.userGraduate),
               title: Text('Tutores'),
               backgroundColor: Colors.blueGrey),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person),
+              icon: Icon(FontAwesomeIcons.user),
               title: Text('Mi Perfil'),
               backgroundColor: Colors.blueAccent),
         ],
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
       ),
     );
   }
