@@ -44,7 +44,12 @@ class _ClasesState extends State<Clases> {
                       '¿Puedo creer en la iglesia?', Colors.orange),
                   lesson('images/saludable.png', '5', '¿Como debo vivir?',
                       Colors.green),
-                )
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                lesson('images/tierra.png', '6',
+                    '¿Que esta pasando en el mundo?', Colors.redAccent)
               ],
             )
           ],
@@ -58,7 +63,7 @@ Widget twoLessons(Widget lesson1, Widget lesson2) {
     children: <Widget>[
       lesson1,
       SizedBox(
-        width: 20,
+        width: 32,
       ),
       lesson2
     ],
