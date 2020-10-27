@@ -26,30 +26,30 @@ class _ClasesState extends State<Clases> {
                 SizedBox(
                   height: 40,
                 ),
-                lesson('images/jesus.png', '1', '¿Quien es Dios?',
+                lesson('images/jesus.png', '1', '¿Quién es Dios?',
                     Colors.blue[100]),
                 SizedBox(
                   height: 15,
                 ),
                 twoLessons(
-                    lesson('images/pareja.png', '2', '¿Porque somos asi?',
+                    lesson('images/pareja.png', '2', '¿Por qué somos asi?',
                         Colors.orange),
-                    lesson('images/problema.png', '3', '¿Aun hay esperanza?',
+                    lesson('images/problema.png', '3', '¿Aún hay esperanza?',
                         Colors.blueAccent)),
                 SizedBox(
                   height: 15,
                 ),
                 twoLessons(
                   lesson('images/iglesia.png', '4',
-                      '¿Puedo creer en la iglesia?', Colors.orange),
-                  lesson('images/saludable.png', '5', '¿Como debo vivir?',
+                      '¿Puedo creer en la Iglesia?', Colors.orange),
+                  lesson('images/saludable.png', '5', '¿Cómo debo vivir?',
                       Colors.green),
                 ),
                 SizedBox(
                   height: 15,
                 ),
                 lesson('images/tierra.png', '6',
-                    '¿Que esta pasando en el mundo?', Colors.redAccent)
+                    '¿Qué está pasando en el mundo?', Colors.redAccent)
               ],
             )
           ],
@@ -127,7 +127,7 @@ Widget lesson(String image, String number, String title, Color color) {
         ),
         Text(
           title,
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
         )
       ],
     ),
