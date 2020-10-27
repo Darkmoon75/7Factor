@@ -228,3 +228,21 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
+
+//Center(
+//              child: Column(
+//              mainAxisAlignment: MainAxisAlignment.center,
+//            children: <Widget>[
+//            CircleAvatar(
+//            backgroundImage: NetworkImage(_user.photoUrl),
+//        ),
+//      Text(_user.displayName),
+//    OutlineButton(
+//    onPressed: () {
+//    gooleSignout();
+//},
+//child: Text("Logout"),
+//)
+//],
+//),
+//)
