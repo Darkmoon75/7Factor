@@ -40,15 +40,15 @@ class _HomeScreenState extends State<HomeScreen> {
               title: Text('Mis Clases'),
               backgroundColor: Colors.blue),
           BottomNavigationBarItem(
-              icon: Icon(Icons.message),
+              icon: Icon(FontAwesomeIcons.bullhorn),
               title: Text('Foro'),
               backgroundColor: Colors.green),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person_pin),
+              icon: Icon(FontAwesomeIcons.userGraduate),
               title: Text('Tutores'),
               backgroundColor: Colors.blueGrey),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person),
+              icon: Icon(FontAwesomeIcons.user),
               title: Text('Mi Perfil'),
               backgroundColor: Colors.blueAccent),
         ],
