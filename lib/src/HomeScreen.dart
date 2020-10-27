@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'tutores.dart';
 import 'clases.dart';
 import 'foro.dart';
-import 'perfil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:seven_hub/src/LoginScreen.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'ProfileScreen.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({Key key}) : super(key: key);
-
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -18,7 +19,9 @@ class _HomeScreenState extends State<HomeScreen> {
     Clases(),
     Foro(),
     Tutores(),
-    Perfil(),
+    ProfileScreen(
+        // detailsUser: details,
+        ),
   ];
 
   void onTappedBar(int index) {
