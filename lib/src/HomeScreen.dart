@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -8,6 +9,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int _currentIndex = 0;
+  final List<Widget> _children = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,24 +19,32 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.blue,
       ),
       backgroundColor: Colors.white,
+      body: Container(),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0, // this will be set when a new tab is tapped
+        currentIndex: _currentIndex,
         items: [
           BottomNavigationBarItem(
-            icon: new Icon(Icons.home),
-            title: new Text('Lessons'),
-          ),
+              icon: Icon(Icons.class_),
+              title: Text('Mis Clases'),
+              backgroundColor: Colors.blue),
           BottomNavigationBarItem(
-            icon: new Icon(Icons.mail),
-            title: new Text('Forum'),
-          ),
+              icon: Icon(Icons.message),
+              title: Text('Foro'),
+              backgroundColor: Colors.green),
           BottomNavigationBarItem(
-            icon: new Icon(Icons.mail),
-            title: new Text('Tutors'),
-          ),
+              icon: Icon(Icons.person_pin),
+              title: Text('Tutores'),
+              backgroundColor: Colors.blueGrey),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person), title: Text('My Profile'))
+              icon: Icon(Icons.person),
+              title: Text('Mi Perfil'),
+              backgroundColor: Colors.blueAccent),
         ],
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
       ),
     );
   }
