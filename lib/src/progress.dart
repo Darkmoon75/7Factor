@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Perfil extends StatefulWidget {
-  Perfil({Key key}) : super(key: key);
+class Progress extends StatefulWidget {
+  Progress({Key key}) : super(key: key);
 
   @override
-  _PerfilState createState() => _PerfilState();
+  _ProgressState createState() => _ProgressState();
 }
 
-class _PerfilState extends State<Perfil> {
+class _ProgressState extends State<Progress> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +17,7 @@ class _PerfilState extends State<Perfil> {
       ),
       backgroundColor: Colors.white,
       body: new Center(
-        child: new Text("Esta es la pantalla del Perfil"),
+        child: new Text("Esta es la pantalla del Progreso"),
       ),
     );
   }

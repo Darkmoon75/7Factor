@@ -3,10 +3,7 @@ import 'tutores.dart';
 import 'clases.dart';
 import 'foro.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:seven_hub/src/LoginScreen.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'ProfileScreen.dart';
+import 'progress.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -18,6 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Clases(),
     Foro(),
     Tutores(),
+    Progress(),
   ];
 
   int _currentIndex = 0;
