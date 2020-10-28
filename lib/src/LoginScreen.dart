@@ -55,7 +55,9 @@ class _LoginScreenState extends State<LoginScreen> {
     Navigator.push(
       context,
       new MaterialPageRoute(
-        builder: (context) => new HomeScreen(),
+        builder: (context) => new ProfileScreen(
+          detailsUser: details,
+        ),
       ),
     );
     return userDetails;
