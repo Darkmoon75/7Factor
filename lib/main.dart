@@ -5,7 +5,7 @@ import 'package:seven_hub/src/Splash.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: HomeScreen(),
+    home: Splash(),
     title: 'Nombre de la App',
     debugShowCheckedModeBanner: false,
   ));
