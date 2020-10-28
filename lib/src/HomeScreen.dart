@@ -14,15 +14,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _currentIndex = 0;
   final List<Widget> _children = [
     Clases(),
     Foro(),
     Tutores(),
-    ProfileScreen(
-        // detailsUser: details,
-        ),
   ];
+
+  int _currentIndex = 0;
 
   void onTappedBar(int index) {
     setState(() {
@@ -52,8 +50,8 @@ class _HomeScreenState extends State<HomeScreen> {
               title: Text('Tutores'),
               backgroundColor: Colors.blueGrey),
           BottomNavigationBarItem(
-              icon: Icon(FontAwesomeIcons.user),
-              title: Text('Mi Perfil'),
+              icon: Icon(FontAwesomeIcons.award),
+              title: Text('Progreso'),
               backgroundColor: Colors.blueAccent),
         ],
       ),

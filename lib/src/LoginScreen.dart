@@ -52,6 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
       userDetails.email,
       providerData,
     );
+
     Navigator.push(
       context,
       new MaterialPageRoute(
