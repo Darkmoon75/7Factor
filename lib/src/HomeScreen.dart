@@ -42,10 +42,10 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
               icon: Icon(FontAwesomeIcons.bullhorn),
               title: Text('Foro'),
-              backgroundColor: Colors.green),
+              backgroundColor: Colors.blueGrey),
           BottomNavigationBarItem(
               icon: Icon(FontAwesomeIcons.userGraduate),
-              title: Text('Tutores'),
+              title: Text('Mentores'),
               backgroundColor: Colors.blueGrey),
           BottomNavigationBarItem(
               icon: Icon(FontAwesomeIcons.award),

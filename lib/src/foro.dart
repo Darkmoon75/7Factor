@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flare_flutter/flare_actor.dart';
 
 class Foro extends StatefulWidget {
   Foro({Key key}) : super(key: key);
@@ -16,9 +17,24 @@ class _ForoState extends State<Foro> {
         backgroundColor: Colors.blue,
       ),
       backgroundColor: Colors.white,
-      body: new Center(
-        child: new Text("Esta es la pantalla del Foro"),
-      ),
+      body: Center(
+          child: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(32.0),
+            child: Container(
+              width: 200,
+              height: 200,
+              child: FlareActor(
+                "images/messages.flr",
+                animation: "go",
+              ),
+            ),
+          ),
+          Text("Puedes preguntar lo que quieras a nuestros mentores",
+              style: TextStyle(color: Colors.black)),
+        ],
+      )),
     );
   }
 }
