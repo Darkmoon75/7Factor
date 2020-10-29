@@ -21,15 +21,17 @@ class _TutoresState extends State<Tutores> {
           children: <Widget>[
             ListView(
               children: <Widget>[
-                tutores('Laico#1', 'Experto en Familia', 'images/avatar1.png'),
-                tutores('Laico#2', 'Experto en Profecia', 'images/avatar2.png'),
-                tutores('Laico#3', 'Experto en Jovenes', 'images/avatar3.png'),
-                tutores('Laico#4', 'Experto en Niños', 'images/avatar4.png'),
-                tutores('Laico#5', 'Experto en Antiguo Testamento',
+                tutores('Mentor#1', 'Experto en Familia', 'images/avatar1.png'),
+                tutores(
+                    'Mentor#2', 'Experto en Profecia', 'images/avatar2.png'),
+                tutores('Mentor#3', 'Experto en Jovenes', 'images/avatar3.png'),
+                tutores('Mentor#4', 'Experto en Niños', 'images/avatar4.png'),
+                tutores('Mentor#5', 'Experto en Antiguo Testamento',
                     'images/avatar2.png'),
-                tutores('Laico#6', 'Experto en Salud', 'images/avatar1.png'),
-                tutores('Laico#7', 'Experto en Noviazgo', 'images/avatar4.png'),
-                tutores('Laico#8', 'Experto en Nuevo Testamento',
+                tutores('Mentor#6', 'Experto en Salud', 'images/avatar1.png'),
+                tutores(
+                    'Mentor#7', 'Experto en Noviazgo', 'images/avatar4.png'),
+                tutores('Mentor#8', 'Experto en Nuevo Testamento',
                     'images/avatar3.png'),
               ],
             )
