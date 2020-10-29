@@ -17,7 +17,7 @@ class _ForoState extends State<Foro> {
       ),
       backgroundColor: Colors.white,
       body: new Center(
-        child: new Text("Esta es la pantalla de Foro"),
+        child: new Text("Esta es la pantalla del Foro"),
       ),
     );
   }
