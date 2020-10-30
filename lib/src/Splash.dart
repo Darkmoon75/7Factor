@@ -16,7 +16,7 @@ class Splash extends StatelessWidget {
         children: <Widget>[
           //We take the image from the assets
           Image.asset(
-            'assets/splash-image.png',
+            'images/splash.png',
             height: 250,
           ),
           SizedBox(
@@ -24,7 +24,7 @@ class Splash extends StatelessWidget {
           ),
           //Texts and Styling of them
           Text(
-            'Welcome to 7Factor',
+            'Welcome to Shekina',
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.white, fontSize: 28),
           ),
