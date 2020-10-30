@@ -78,7 +78,6 @@ class _DoctrinaCuatroState extends State<DoctrinaCuatro> {
                   SizedBox(
                     height: 20,
                   ),
-                  Checkbox(value: null, onChanged: null)
                 ],
               ))
         ],

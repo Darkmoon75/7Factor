@@ -15,6 +15,10 @@ class _TutoresState extends State<Tutores> {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: Colors.blue,
+          title: Text(
+            'Mentores',
+            textAlign: TextAlign.center,
+          ),
         ),
         backgroundColor: Colors.white,
         body: Stack(

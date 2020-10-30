@@ -15,6 +15,10 @@ class _ForoState extends State<Foro> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.blue,
+        title: Text(
+          'Foro',
+          textAlign: TextAlign.center,
+        ),
       ),
       backgroundColor: Colors.white,
       body: Center(
