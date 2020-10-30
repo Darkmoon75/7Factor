@@ -151,7 +151,7 @@ class _ClasesState extends State<Clases> {
                                       height: 50,
                                     ),
                                     radius: 35,
-                                    backgroundColor: Colors.blue,
+                                    backgroundColor: Colors.green,
                                   ),
                                 )
                               ],
@@ -227,7 +227,7 @@ class _ClasesState extends State<Clases> {
                                       height: 50,
                                     ),
                                     radius: 35,
-                                    backgroundColor: Colors.blue,
+                                    backgroundColor: Colors.green,
                                   ),
                                 )
                               ],
@@ -307,7 +307,7 @@ class _ClasesState extends State<Clases> {
                                       height: 50,
                                     ),
                                     radius: 35,
-                                    backgroundColor: Colors.blue,
+                                    backgroundColor: Colors.orange,
                                   ),
                                 )
                               ],
@@ -383,7 +383,7 @@ class _ClasesState extends State<Clases> {
                                       height: 50,
                                     ),
                                     radius: 35,
-                                    backgroundColor: Colors.blue,
+                                    backgroundColor: Colors.orange,
                                   ),
                                 )
                               ],
@@ -460,7 +460,7 @@ class _ClasesState extends State<Clases> {
                                   height: 50,
                                 ),
                                 radius: 35,
-                                backgroundColor: Colors.blue,
+                                backgroundColor: Colors.red,
                               ),
                             )
                           ],

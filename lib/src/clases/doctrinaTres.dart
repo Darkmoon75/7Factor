@@ -79,11 +79,11 @@ class _DoctrinaTresState extends State<DoctrinaTres> {
                   SizedBox(
                     height: 20,
                   ),
-                  Image.asset('images/padre.jpg'),
+                  Image.asset('images/abrazo.jpg'),
                   Container(
                       padding: EdgeInsets.all(10),
                       child: Text(
-                        "Dios Padre",
+                        "¿Puedo experimentar la salvacion?",
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 20,
@@ -92,7 +92,7 @@ class _DoctrinaTresState extends State<DoctrinaTres> {
                         textAlign: TextAlign.center,
                       )),
                   Text(
-                      "Dios, el Padre Eterno es el Creador, Originador, Sustentador y Soberano de toda la creación. Es justo y santo, misericordioso y clemente, tardo en airarse y abundante en amor y fidelidad. Las cualidades y las facultades del Padre se manifiestan también en el Hijo y en el Espíritu Santo."),
+                      "Con amor y misericordia infinitos Dios hizo que Cristo, que no conoció pecado, fuera hecho pecado por nosotros, para que nosotros pudiésemos ser hechos justicia de Dios en él. Guiados por el Espíritu Santo sentimos nuestra necesi­dad, reconocemos nuestra pecaminosidad, nos arrepentimos de nuestras transgresiones, y ejercemos fe en Jesús como Señor y Cristo, como sustituto y ejemplo. Esta fe que acepta la salvación nos llega por medio del poder divino de la Palabra y es un don de la gracia de Dios. Mediante Cristo somos justifi­cados, adoptados como hijos e hijas de Dios y librados del dominio del pecado. Por medio del Espíritu nacemos de nuevo y somos santificados; el Espíritu renueva nuestras mentes, graba la ley de amor de Dios en nuestros corazones y nos da poder para vivir una vida santa. Al permanecer en él somos participantes de la naturaleza divina y tenemos la seguridad de la salvación ahora y en ocasión del juicio."),
                 ],
               ))
         ],
