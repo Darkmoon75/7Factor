@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'tutores.dart';
 import 'clases.dart';
 import 'foro.dart';
-import 'perfil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'progress.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({Key key}) : super(key: key);
-
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _currentIndex = 0;
   final List<Widget> _children = [
     Clases(),
     Foro(),
     Tutores(),
-    Perfil(),
+    Progress(),
   ];
+
+  int _currentIndex = 0;
 
   void onTappedBar(int index) {
     setState(() {
@@ -43,14 +42,14 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
               icon: Icon(FontAwesomeIcons.bullhorn),
               title: Text('Foro'),
-              backgroundColor: Colors.green),
-          BottomNavigationBarItem(
-              icon: Icon(FontAwesomeIcons.userGraduate),
-              title: Text('Tutores'),
               backgroundColor: Colors.blueGrey),
           BottomNavigationBarItem(
-              icon: Icon(FontAwesomeIcons.user),
-              title: Text('Mi Perfil'),
+              icon: Icon(FontAwesomeIcons.userGraduate),
+              title: Text('Mentores'),
+              backgroundColor: Colors.blueGrey),
+          BottomNavigationBarItem(
+              icon: Icon(FontAwesomeIcons.award),
+              title: Text('Progreso'),
               backgroundColor: Colors.blueAccent),
         ],
       ),

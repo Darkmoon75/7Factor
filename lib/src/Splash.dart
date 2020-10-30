@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'LoginScreen.dart';
 
-class Splash extends StatelessWidget{
+class Splash extends StatelessWidget {
   final Color primaryColor = Color(0xff18203d);
   final Color secondaryColor = Color(0xff232c51);
 
@@ -18,7 +16,7 @@ class Splash extends StatelessWidget{
         children: <Widget>[
           //We take the image from the assets
           Image.asset(
-            'assets/splash-image.png',
+            'images/splash.png',
             height: 250,
           ),
           SizedBox(
@@ -26,7 +24,7 @@ class Splash extends StatelessWidget{
           ),
           //Texts and Styling of them
           Text(
-            'Welcome to 7Factor',
+            'Welcome to Shekina',
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.white, fontSize: 28),
           ),
@@ -45,8 +43,8 @@ class Splash extends StatelessWidget{
             elevation: 0,
             height: 50,
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (_) => LoginScreen()));
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (_) => LoginScreen()));
             },
             color: logoGreen,
             child: Row(
@@ -63,5 +61,4 @@ class Splash extends StatelessWidget{
       ),
     );
   }
-
 }
