@@ -93,7 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     SizedBox(height: 20),
                     Text(
-                      'Enter your email and password below to continue to 7Factor and let the learning begin!',
+                      'Enter your email and password below to continue to Shekina and let the learning begin!',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.openSans(
                           color: Colors.white, fontSize: 14),
@@ -157,14 +157,16 @@ class _LoginScreenState extends State<LoginScreen> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Image.asset(
-          'assets/tgd_white.png',
-          height: 40,
+          'images/logoAvatar.png',
+          height: 60,
+          width: 60,
+          scale: 20,
         ),
-        Text('7Factor',
+        Text('Powered By Not Exception',
             textAlign: TextAlign.center,
             style: GoogleFonts.openSans(
                 color: Colors.white,
-                fontSize: 20,
+                fontSize: 15,
                 fontWeight: FontWeight.bold)),
       ],
     );
