@@ -1,17 +1,23 @@
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:seven_hub/src/chat/Widgets/ProgressWidget.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'HomeScreen.dart';
-import 'ProfileScreen.dart';
+import 'package:seven_hub/src/HomeScreen.dart';
 
 class LoginScreen extends StatefulWidget {
+  LoginScreen({Key key}) : super(key: key);
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  LoginScreenState createState() => LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class LoginScreenState extends State<LoginScreen> {
   final Color primaryColor = Color(0xff18203d);
 
   final Color secondaryColor = Color(0xff232c51);
@@ -21,47 +27,40 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController nameController = TextEditingController();
 
   final TextEditingController passwordController = TextEditingController();
-  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-  final GoogleSignIn _googlSignIn = new GoogleSignIn();
 
-  Future<FirebaseUser> _signIn(BuildContext context) async {
-    Scaffold.of(context).showSnackBar(new SnackBar(
-      content: new Text('Sign in'),
-    ));
+  final GoogleSignIn googleSignIn = new GoogleSignIn();
+  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  SharedPreferences preferences;
 
-    final GoogleSignInAccount googleUser = await _googlSignIn.signIn();
-    final GoogleSignInAuthentication googleAuth =
-        await googleUser.authentication;
+  bool isLoggedIn = false;
+  bool isLoading = false;
+  FirebaseUser currentUser;
 
-    final AuthCredential credential = GoogleAuthProvider.getCredential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
 
-    FirebaseUser userDetails =
-        await _firebaseAuth.signInWithCredential(credential);
-    ProviderDetails providerInfo = new ProviderDetails(userDetails.providerId);
+    isSignedIn();
+  }
 
-    List<ProviderDetails> providerData = new List<ProviderDetails>();
-    providerData.add(providerInfo);
+  void isSignedIn() async {
+    this.setState(() {
+      isLoggedIn = true;
+    });
+    preferences = await SharedPreferences.getInstance();
 
-    UserDetails details = new UserDetails(
-      userDetails.providerId,
-      userDetails.displayName,
-      userDetails.photoUrl,
-      userDetails.email,
-      providerData,
-    );
-
-    Navigator.push(
-      context,
-      new MaterialPageRoute(
-        builder: (context) => new ProfileScreen(
-          detailsUser: details,
-        ),
-      ),
-    );
-    return userDetails;
+    isLoggedIn = await googleSignIn.isSignedIn();
+    if (isLoggedIn) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  HomeScreen(currentUserId: preferences.getString("id"))));
+    }
+    this.setState(() {
+      isLoading = false;
+    });
   }
 
   @override
@@ -86,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      'Sign in to 7Factor and continue',
+                      'Sign in to Shekina and continue',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.openSans(
                           color: Colors.white, fontSize: 28),
@@ -117,31 +116,33 @@ class _LoginScreenState extends State<LoginScreen> {
                       textColor: Colors.white,
                     ),
                     SizedBox(height: 20),
-                    MaterialButton(
-                      elevation: 0,
-                      minWidth: double.maxFinite,
-                      height: 50,
-                      onPressed: () => _signIn(context)
-                          .then((FirebaseUser user) => print(user))
-                          .catchError((e) => print(e)),
-                      color: Colors.blue,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Icon(FontAwesomeIcons.google),
-                          SizedBox(width: 10),
-                          Text('Sign-in using Google',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 16)),
-                        ],
+                    GestureDetector(
+                      onTap: controlSignIn,
+                      child: Center(
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              width: 270.0,
+                              height: 65.0,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage("images/googlesign.png"),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                      textColor: Colors.white,
                     ),
                     SizedBox(height: 100),
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: _buildFooterLogo(),
-                    )
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(1.0),
+                      child: isLoading ? circularProgress() : Container(),
+                    ),
                   ],
                 ),
               ),
@@ -152,17 +153,86 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  Future<Null> controlSignIn() async {
+    preferences = await SharedPreferences.getInstance();
+    this.setState(() {
+      isLoading = true;
+    });
+    GoogleSignInAccount googleUser = await googleSignIn.signIn();
+    GoogleSignInAuthentication googleAuthentication =
+        await googleUser.authentication;
+    final AuthCredential credential = GoogleAuthProvider.getCredential(
+        idToken: googleAuthentication.idToken,
+        accessToken: googleAuthentication.accessToken);
+
+    FirebaseUser firebaseUser =
+        (await firebaseAuth.signInWithCredential(credential)).user;
+
+    //Signin Success
+    if (firebaseUser != null) {
+      final QuerySnapshot resultQuery = await Firestore.instance
+          .collection("users")
+          .where("id", isEqualTo: firebaseUser.uid)
+          .getDocuments();
+      final List<DocumentSnapshot> documentSnapshots = resultQuery.documents;
+
+      //Save Data to firestore - if new user
+      if (documentSnapshots.length == 0) {
+        Firestore.instance
+            .collection("users")
+            .document(firebaseUser.uid)
+            .setData({
+          "nickname": firebaseUser.displayName,
+          "photoUrl": firebaseUser.photoUrl,
+          "id": firebaseUser.uid,
+          "aboutMe": "7factor",
+          "createdAt": DateTime.now().millisecondsSinceEpoch.toString(),
+          "chattingWith": null,
+        });
+
+        //Write data to Local
+        currentUser = firebaseUser;
+        await preferences.setString("id", currentUser.uid);
+        await preferences.setString("nickname", currentUser.displayName);
+        await preferences.setString("photoUrl", currentUser.photoUrl);
+      } else {
+        currentUser = firebaseUser;
+        await preferences.setString("id", documentSnapshots[0]["id"]);
+        await preferences.setString(
+            "nickname", documentSnapshots[0]["nickname"]);
+        await preferences.setString(
+            "photoUrl", documentSnapshots[0]["photoUrl"]);
+        await preferences.setString("aboutMe", documentSnapshots[0]["aboutMe"]);
+      }
+      Fluttertoast.showToast(msg: "Congratulations, Sign in Successful.");
+      this.setState(() {
+        isLoading = false;
+      });
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  HomeScreen(currentUserId: firebaseUser.uid)));
+    }
+    //Signin Not Success - Failed
+
+    else {
+      Fluttertoast.showToast(msg: "Try Again, Signned Failed");
+      this.setState(() {
+        isLoading = false;
+      });
+    }
+  }
+
   _buildFooterLogo() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Image.asset(
-          'images/logoAvatar.png',
-          height: 60,
-          width: 60,
-          scale: 20,
+          'images/Logo3.png',
+          height: 40,
         ),
-        Text('Powered By Not Exception',
+        Text('Shekina',
             textAlign: TextAlign.center,
             style: GoogleFonts.openSans(
                 color: Colors.white,
@@ -194,20 +264,4 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-}
-
-class UserDetails {
-  final String providerDetails;
-  final String userName;
-  final String photoUrl;
-  final String userEmail;
-  final List<ProviderDetails> providerData;
-
-  UserDetails(this.providerDetails, this.userName, this.photoUrl,
-      this.userEmail, this.providerData);
-}
-
-class ProviderDetails {
-  ProviderDetails(this.providerDetails);
-  final String providerDetails;
 }

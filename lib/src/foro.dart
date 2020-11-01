@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flare_flutter/flare_actor.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 class Foro extends StatefulWidget {
   Foro({Key key}) : super(key: key);
@@ -34,11 +34,36 @@ class _ForoState extends State<Foro> {
                 animation: "go",
               ),
             ),
+            foregroundColor: Colors.white,
           ),
-          Text("Puedes preguntar lo que quieras a nuestros mentores",
-              style: TextStyle(color: Colors.black)),
-        ],
-      )),
+          title: Text(name),
+          subtitle: Text(description),
+        ),
+      ),
+      actions: <Widget>[
+        IconSlideAction(
+          caption: 'Archive',
+          color: Colors.blue,
+          icon: Icons.archive,
+          onTap: () => _showSnackBar('Archive'),
+        ),
+      ],
+      secondaryActions: <Widget>[
+        IconSlideAction(
+          caption: 'More',
+          color: Colors.black45,
+          icon: Icons.more_horiz,
+          onTap: () => _showSnackBar('More'),
+        ),
+        IconSlideAction(
+          caption: 'Chat',
+          color: Colors.green,
+          icon: Icons.message,
+          onTap: () => _showSnackBar('Delete'),
+        ),
+      ],
     );
   }
+
+  _showSnackBar(String s) {}
 }

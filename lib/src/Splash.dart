@@ -16,7 +16,7 @@ class Splash extends StatelessWidget {
         children: <Widget>[
           //We take the image from the assets
           Image.asset(
-            'images/splash.png',
+            'images/Logo3.png',
             height: 250,
           ),
           SizedBox(

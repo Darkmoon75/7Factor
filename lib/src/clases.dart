@@ -7,7 +7,7 @@ import 'package:seven_hub/src/clases/doctrinaDos.dart';
 import 'package:seven_hub/src/clases/doctrinaSeis.dart';
 import 'package:seven_hub/src/clases/doctrinaTres.dart';
 import 'package:seven_hub/src/clases/doctrinaUno.dart';
-import 'package:seven_hub/src/tutores.dart';
+import 'package:seven_hub/src/foro.dart';
 
 class Clases extends StatefulWidget {
   Clases({Key key}) : super(key: key);
@@ -420,7 +420,7 @@ class _ClasesState extends State<Clases> {
                           '¿Es correcto mi estilo de vida?',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 14,
+                            fontSize: 13,
                           ),
                         )
                       ],
