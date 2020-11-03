@@ -40,6 +40,7 @@ dependencies:
   flutter_local_notifications: ^1.4.0
   photo_view: ^0.5.0
   flare_flutter: ^2.0.6
+  flutter_launcher_icons: 
     
 
 
@@ -51,6 +52,11 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "images/Logo3.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
