@@ -16,6 +16,10 @@ class _ProgressState extends State<Progress> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.blue,
+        title: Text(
+          'Mi progreso',
+          textAlign: TextAlign.center,
+        ),
       ),
       backgroundColor: Colors.white,
       body: Center(

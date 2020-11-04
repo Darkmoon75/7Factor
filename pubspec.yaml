@@ -26,12 +26,21 @@ dependencies:
   font_awesome_flutter:
   google_fonts:
   material_design_icons_flutter:
-  shared_preferences: ^0.5.8
-  firebase_core: ^0.3.1+1
-  firebase_auth: ^0.8.3
-  google_sign_in: ^4.0.1+3
   flutter_slidable:
+  firebase_auth: ^0.14.0+5
+  google_sign_in: ^4.0.7
+  cloud_firestore: ^0.12.9+5
+  fluttertoast: ^3.1.3
+  image_picker: ^0.6.4
+  shared_preferences: ^0.5.3+4
+  firebase_storage: ^3.0.6
+  cached_network_image: 2.0.0-rc.1
+  intl: ^0.15.7
+  firebase_messaging: ^6.0.13
+  flutter_local_notifications: ^1.4.0
+  photo_view: ^0.5.0
   flare_flutter: ^2.0.6
+  flutter_launcher_icons: 
     
 
 
@@ -44,19 +53,30 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "images/Logo3.png"
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
-  assets:
+   uses-material-design: true
+   assets:
     - images/
+    - images/stickers/
+
+
+    
+    
+    
     
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
-  uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
   # assets:
