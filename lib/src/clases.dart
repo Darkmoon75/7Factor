@@ -7,7 +7,7 @@ import 'package:seven_hub/src/clases/doctrinaDos.dart';
 import 'package:seven_hub/src/clases/doctrinaSeis.dart';
 import 'package:seven_hub/src/clases/doctrinaTres.dart';
 import 'package:seven_hub/src/clases/doctrinaUno.dart';
-import 'package:seven_hub/src/tutores.dart';
+import 'package:seven_hub/src/foro.dart';
 
 class Clases extends StatefulWidget {
   Clases({Key key}) : super(key: key);
@@ -23,6 +23,16 @@ class _ClasesState extends State<Clases> {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: Colors.blue,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                "Mis Clases",
+                style: TextStyle(fontSize: 20),
+              ),
+              appBarItem("images/dracma.png", "200", Colors.yellow),
+            ],
+          ),
         ),
         backgroundColor: Colors.white,
         body: Stack(
@@ -410,7 +420,7 @@ class _ClasesState extends State<Clases> {
                           '¿Es correcto mi estilo de vida?',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 14,
+                            fontSize: 13,
                           ),
                         )
                       ],
@@ -571,5 +581,21 @@ Widget lesson(String image, String number, String title, Color color) {
         )
       ],
     ),
+  );
+}
+
+Widget appBarItem(String image, String num, Color color) {
+  return Row(
+    mainAxisSize: MainAxisSize.min,
+    children: <Widget>[
+      Image.asset(
+        image,
+        height: 30,
+      ),
+      Text(
+        num,
+        style: TextStyle(color: color),
+      )
+    ],
   );
 }
