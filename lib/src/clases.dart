@@ -8,6 +8,7 @@ import 'package:seven_hub/src/clases/doctrinaDos.dart';
 import 'package:seven_hub/src/clases/doctrinaSeis.dart';
 import 'package:seven_hub/src/clases/doctrinaTres.dart';
 import 'package:seven_hub/src/clases/doctrinaUno.dart';
+import 'package:seven_hub/src/clases/mayordomiaCristiana.dart';
 import 'package:seven_hub/src/foro.dart';
 
 class Clases extends StatefulWidget {
@@ -475,7 +476,7 @@ class _ClasesState extends State<Clases> {
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => DoctrinaSeis(),
+                        builder: (context) => MayordomiaCristiana(),
                       ),
                     );
                   },
