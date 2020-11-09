@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:seven_hub/src/HomeScreen.dart';
+import 'package:flutter/material.dart';
+import 'package:quiz_view/quiz_view.dart';
 import 'package:seven_hub/src/clases.dart';
 
 class DoctrinaUno extends StatefulWidget {
@@ -98,6 +101,112 @@ class _DoctrinaUnoState extends State<DoctrinaUno> {
               ))
         ],
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => QuizUno(),
+              ));
+        },
+        label: Text('Activity'),
+        icon: Icon(FontAwesomeIcons.pencilAlt),
+        backgroundColor: Colors.red,
+      ),
+    );
+  }
+}
+
+class QuizUno extends StatefulWidget {
+  QuizUno({Key key}) : super(key: key);
+
+  @override
+  _QuizUnoState createState() => _QuizUnoState();
+}
+
+class _QuizUnoState extends State<QuizUno> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Quiz Leccion 1"),
+      ),
+      body: Center(
+          child: QuizView(
+        image: Container(
+          width: 150,
+          height: 150,
+          child: Image.asset("images/question1.jpg"),
+        ),
+        showCorrect: true,
+        tagBackgroundColor: Colors.blue,
+        tagColor: Colors.black,
+        questionTag: "Pregunta 1",
+        answerColor: Colors.white,
+        answerBackgroundColor: Color.fromARGB(255, 250, 18, 18),
+        questionColor: Colors.white,
+        backgroundColor: Color.fromARGB(255, 133, 148, 169),
+        width: 300,
+        height: 600,
+        question: "¿Cuántos dioses hay? Efesios 4:6",
+        rightAnswer: "Hay un solo Dios",
+        wrongAnswers: ["Hay muchos dioses", "Dos dioses"],
+        onRightAnswer: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => QuizDos(),
+              ));
+        },
+        onWrongAnswer: () => print("Wrong"),
+      )),
+    );
+  }
+}
+
+class QuizDos extends StatefulWidget {
+  QuizDos({Key key}) : super(key: key);
+
+  @override
+  _QuizDosState createState() => _QuizDosState();
+}
+
+class _QuizDosState extends State<QuizDos> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Quiz Leccion 1"),
+      ),
+      body: Center(
+          child: QuizView(
+        image: Container(
+          width: 150,
+          height: 150,
+          child: Image.asset("images/question1.jpg"),
+        ),
+        showCorrect: true,
+        tagBackgroundColor: Colors.blue,
+        tagColor: Colors.black,
+        questionTag: "Pregunta 2",
+        answerColor: Colors.white,
+        answerBackgroundColor: Color.fromARGB(255, 250, 18, 18),
+        questionColor: Colors.white,
+        backgroundColor: Color.fromARGB(255, 133, 148, 169),
+        width: 300,
+        height: 600,
+        question: "¿Cuál es la naturaleza de Dios? Juan 4:24",
+        wrongAnswers: ["De naturaleza carnal", "De naturaleza fisica"],
+        rightAnswer: "De naturaleza espiritual",
+        onRightAnswer: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DoctrinaUno(),
+              ));
+        },
+        onWrongAnswer: () => print("Wrong"),
+      )),
     );
   }
 }

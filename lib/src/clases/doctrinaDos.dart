@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_view/quiz_view.dart';
 import 'package:flutter/rendering.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:seven_hub/src/HomeScreen.dart';
 import 'package:seven_hub/src/clases.dart';
 
@@ -78,9 +80,68 @@ class _DoctrinaDosState extends State<DoctrinaDos> {
                   Text(
                       "Dios hizo al hombre y la mujer a su imagen, con individualidad propia, y con la facultad y la libertad de pensar y obrar. Aunque los creó como seres libres, cada uno es una unidad indivisible de cuerpo, mente y espíritu, que depende de Dios para la vida, el aliento y todo lo demás. Cuando nuestros primeros padres desobedecieron a Dios, negaron su dependencia de él y cayeron de la elevada posición que ocupaban bajo el gobierno de Dios. La imagen de Dios en ellos se desfiguró y quedaron sujetos a la muerte. Sus descendientes participan de esta naturaleza caída y de sus consecuencias. Nacen con debilidades y tendencias hacia el mal. Pero Dios, en Cristo, reconcilió al mundo consigo mismo y, por medio de su Espíritu Santo, restaura en los mortales penitentes la imagen de su Hacedor. Creados para la gloria de Dios, se los llama a amarlo a él y a amarse mutuamente, y a cuidar del ambiente que los rodea."),
                 ],
-              ))
+              )),
         ],
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => QuizDoctrinaDos(),
+              ));
+        },
+        label: Text('Activity'),
+        icon: Icon(FontAwesomeIcons.pencilAlt),
+        backgroundColor: Colors.red,
+      ),
+    );
+  }
+}
+
+class QuizDoctrinaDos extends StatefulWidget {
+  QuizDoctrinaDos({Key key}) : super(key: key);
+
+  @override
+  _QuizDoctrinaDosState createState() => _QuizDoctrinaDosState();
+}
+
+class _QuizDoctrinaDosState extends State<QuizDoctrinaDos> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Quiz Leccion 2"),
+      ),
+      body: Center(
+          child: QuizView(
+        image: Container(
+          width: 150,
+          height: 150,
+          child: Image.asset("images/question2.jpg"),
+        ),
+        showCorrect: true,
+        tagBackgroundColor: Colors.blue,
+        tagColor: Colors.black,
+        questionTag: "Pregunta 1",
+        answerColor: Colors.white,
+        answerBackgroundColor: Color.fromARGB(255, 250, 18, 18),
+        questionColor: Colors.white,
+        backgroundColor: Color.fromARGB(255, 133, 148, 169),
+        width: 300,
+        height: 600,
+        question: "¿Qué es pecado? 1 Juan 3:4",
+        rightAnswer: "Infraccion de la ley",
+        wrongAnswers: ["El amor al dinero", "Decir mentiras"],
+        onRightAnswer: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => HomeScreen(),
+              ));
+        },
+        onWrongAnswer: () => print("Wrong"),
+      )),
     );
   }
 }

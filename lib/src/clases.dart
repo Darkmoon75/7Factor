@@ -33,6 +33,17 @@ class _ClasesState extends State<Clases> {
         crossAxisCount: 2,
         children: [
           Container(
+            alignment: Alignment.center,
+            child: Text(
+              "Temas Basicos",
+              style: TextStyle(fontSize: 23, fontFamily: "Times New Roman"),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          Container(
+            child: Image.asset("images/libro.png"),
+          ),
+          Container(
             child: Hero(
               tag: "images/jesus.png",
               child: Card(
@@ -404,7 +415,9 @@ class _ClasesState extends State<Clases> {
               textAlign: TextAlign.center,
             ),
           ),
-          Container(),
+          Container(
+            child: Image.asset("images/birrete.png"),
+          ),
           Container(
             child: Hero(
               tag: "images/familia.png",
