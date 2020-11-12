@@ -25,6 +25,7 @@ class _ClasesState extends State<Clases> {
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
         title: Text('Mis Clases'),
+        automaticallyImplyLeading: false,
       ),
       body: GridView.count(
         primary: false,

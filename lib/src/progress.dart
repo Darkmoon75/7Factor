@@ -26,10 +26,10 @@ class _ProgressState extends State<Progress> {
           child: Column(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.all(32.0),
+            padding: const EdgeInsets.all(10.0),
             child: Container(
-              width: 200,
-              height: 200,
+              width: MediaQuery.of(context).size.width - 30,
+              height: MediaQuery.of(context).size.height - 600,
               child: FlareActor(
                 "images/Chest.flr",
                 animation: "Play",
@@ -47,19 +47,25 @@ class _ProgressState extends State<Progress> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(23.0),
+            padding: const EdgeInsets.all(20.0),
             child: Container(
-              width: 300,
-              height: 300,
+              width: MediaQuery.of(context).size.width - 100,
+              height: MediaQuery.of(context).size.height - 600,
               child: FlareActor(
                 "images/map.flr",
                 animation: "Move_1",
               ),
             ),
           ),
-          Text(
-            "Esfuérzate y anímate, no temas, ni tengas miedo de ellos, porque el Señor va contigo, no te dejará, ni te desamparará. Deuteronomio 31:6",
-            style: TextStyle(color: Colors.black),
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Container(
+              child: Text(
+                "Esfuérzate y anímate, no temas, ni tengas miedo de ellos, porque el Señor va contigo, no te dejará, ni te desamparará. Deuteronomio 31:6",
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
           ),
         ],
       )),
