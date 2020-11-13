@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:seven_hub/src/HomeScreen.dart';
+import 'package:video_player/video_player.dart';
 
 class DoctrinaSeis extends StatefulWidget {
   DoctrinaSeis({Key key}) : super(key: key);
@@ -9,6 +10,41 @@ class DoctrinaSeis extends StatefulWidget {
 }
 
 class _DoctrinaSeisState extends State<DoctrinaSeis> {
+  VideoPlayerController playerController;
+  VoidCallback listener;
+
+  @override
+  void initState() {
+    super.initState();
+    listener = () {
+      setState(() {});
+    };
+  }
+
+  void createVideo() {
+    if (playerController == null) {
+      playerController = VideoPlayerController.asset("images/video1.mkv")
+        ..addListener(listener)
+        ..setVolume(1.0)
+        ..initialize()
+        ..play();
+    } else {
+      if (playerController.value.isPlaying) {
+        playerController.pause();
+      } else {
+        playerController.initialize();
+        playerController.play();
+      }
+    }
+  }
+
+  @override
+  void deactivate() {
+    playerController.setVolume(0.0);
+    playerController.removeListener(listener);
+    super.deactivate();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +80,15 @@ class _DoctrinaSeisState extends State<DoctrinaSeis> {
                   borderRadius: BorderRadius.circular(20.0)),
               child: ListView(
                 children: <Widget>[
-                  Image.asset('images/venida.jpg'),
+                  AspectRatio(
+                      aspectRatio: 16 / 9,
+                      child: Container(
+                        child: (playerController != null
+                            ? VideoPlayer(
+                                playerController,
+                              )
+                            : Container()),
+                      )),
                   Container(
                       padding: EdgeInsets.all(10),
                       child: Text(
@@ -64,6 +108,13 @@ class _DoctrinaSeisState extends State<DoctrinaSeis> {
                 ],
               ))
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          createVideo();
+          playerController.play();
+        },
+        child: Icon(Icons.play_arrow),
       ),
     );
   }
